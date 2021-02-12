@@ -7,10 +7,11 @@ public class Main {
 	public static void main(String[] args) {
 		boolean error=false,error2=false;
 		char fallo='a';
-        //CreaciÛn de la pila
+		String cadena;
+        //Creaci√≥n de la pila
         Stack<Character> pila = new Stack<Character>();
         //Apertura del archivo. Usar el path que les funcione local
-        File file = new File("src/Prueba.txt");
+        File file = new File("C:\\Users\\Victor\\Desktop\\estructura\\Examen-1\\Prueba.txt");
 
         // Intento de abrir el archivo
         try (FileReader fr = new FileReader(file)) {
@@ -24,7 +25,7 @@ public class Main {
                     pila.push((char)content);
                 }
                 else if((char)content == '}'){
-                    if(!pila.empty()){ //Checa si la pila no est· vacÌa
+                    if(!pila.empty()){ //Checa si la pila no est√° vac√≠a
                         if(pila.peek().equals('{')){ //Si el elemento al tope de la pila concuerda con el caracter a entrar
                             pila.pop();     //Saca el elemento del tope simbolizando que cierran bien
                         }else {
@@ -34,7 +35,7 @@ public class Main {
                     }
                     else {
                     	//La pila esta vacia y el caracter es un carater de clausura
-                    	System.out.println("Error de llave que cierra");
+                    	System.out.println("Error de llave que cierra se esperaba llave de apertura");
                         error=true;//Se activa la bandera de error para finalizar el programa
                     }
                 }
@@ -44,7 +45,7 @@ public class Main {
                     pila.push((char)content);
                 }
                 else if((char)content == ']'){
-                    if(!pila.empty()){ //Checa si la pila no est· vacÌa
+                    if(!pila.empty()){ //Checa si la pila no est√° vac√≠a
                         if(pila.peek().equals('[')){ //Si el elemento al tope de la pila concuerda con el caracter a entrar
                             pila.pop();     //Saca el elemento del tope simbolizando que cierran bien
                         }else {
@@ -54,7 +55,7 @@ public class Main {
                     }
                     else {
                     	//La pila esta vacia y el caracter es un carater de clausura
-                    	System.out.println("Error de corchete que cierra");
+                    	System.out.println("Error de corchete que cierra se esperaba corchete de apertura");
                         error=true;//Se activa la bandera de error para finalizar el programa
                     	 
                     }
@@ -65,7 +66,7 @@ public class Main {
                     pila.push((char)content);
                 }
                 else if((char)content == ')'){
-                    if(!pila.empty()){ //Checa si la pila no est· vacÌa
+                    if(!pila.empty()){ //Checa si la pila no est√° vac√≠a
                         if(pila.peek().equals('(')){ //Si el elemento al tope de la pila concuerda con el caracter a entrar
                             pila.pop();  //Saca el elemento del tope simbolizando que cierran bien
                         }else {
@@ -75,7 +76,7 @@ public class Main {
                     }
                     else {
                     	//La pila esta vacia y el caracter es un carater de clausura
-                    	System.out.println("Error de parentesis que cierra");        
+                    	System.out.println("Error de parentesis que cierra se esperaba parentesis de apertura");        
                         error=true;//Se activa la bandera de error para finalizar el programa
                     }
                 }
@@ -87,18 +88,25 @@ public class Main {
             else{
             	if(error==false && error2==false) {//El error no fue de que el primer caracter fuera uno de clausura
 	            	if(pila.peek().equals('{'))
-	                    System.out.println("Error de llave que abre");
+	                    System.out.println("Error de llave que abre falta llave que cierra");
 	            	if(pila.peek().equals('['))
-	            		System.out.println("Error de corchete que abre");
+	            		System.out.println("Error de corchete que abre falta corchete que cierra");
 	            	if(pila.peek().equals('('))
-	            		System.out.println("Error de parentesis que abre");
+	            		System.out.println("Error de parentesis que abre falta parentesis que cierra");
             	}else {//error2 indica que el caracter de cerradura no concuerda con el de apertura
+            		switch(pila.peek()) {
+            			case '(':cadena=" se esperaba un parentesis de cerradura";
+            					 break;
+            			case '[':cadena=" se esperaba un corchete de cerradura";
+   					 			 break;
+            			default:cadena=" se esperaba un cerradura de cerradura";
+            		}
             		if(fallo=='}')
-                		System.out.println("Error de llave que cierra");
+                		System.out.println("Error de llave que cierra"+cadena);
                 	if(fallo==']')
-                        System.out.println("Error de corchete que cierra");
+                        System.out.println("Error de corchete que cierra"+cadena);
                 	if(fallo==')')
-                        System.out.println("Error de parentesis que cierra");
+                        System.out.println("Error de parentesis que cierra"+cadena);
             	}
             }
 
