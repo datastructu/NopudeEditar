@@ -99,7 +99,7 @@ public class Main {
             					 break;
             			case '[':cadena=" se esperaba un corchete de cerradura";
    					 			 break;
-            			default:cadena=" se esperaba un cerradura de cerradura";
+            			default:cadena=" se esperaba una llave de cerradura";
             		}
             		if(fallo=='}')
                 		System.out.println("Error de llave que cierra"+cadena);
