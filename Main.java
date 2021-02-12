@@ -11,7 +11,7 @@ public class Main {
         //Creación de la pila
         Stack<Character> pila = new Stack<Character>();
         //Apertura del archivo. Usar el path que les funcione local
-        File file = new File("C:\\Users\\Victor\\Desktop\\estructura\\Examen-1\\Prueba.txt");
+        File file = new File("src/Prueba.txt");
 
         // Intento de abrir el archivo
         try (FileReader fr = new FileReader(file)) {
