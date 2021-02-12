@@ -9,7 +9,7 @@ public class Main {
 		char fallo='a';
 		String cadena;
         //Creación de la pila
-        Stack<Character> pila = new Stack<Character>();
+        Stack<Character> pila = new Stack<>();
         //Apertura del archivo. Usar el path que les funcione local
         File file = new File("src/Prueba.txt");
 
@@ -19,7 +19,7 @@ public class Main {
             //Variable para guardar el caracter que regrese file reader
             int content;
             //Ciclo que lee el archivo caracter por caracter, termina cuando regrese -1 lo cual indica fin del archivo
-            while ((content = fr.read()) != -1 && error==false && error2==false) {
+            while ((content = fr.read()) != -1 && !error && !error2) {
                 //Proceso para llaves
                 if((char)content == '{'){ //Si lee el caracter de apertura lo avienta a la pila
                     pila.push((char)content);
@@ -82,7 +82,7 @@ public class Main {
                 }
             }
           //La pila vacia simboliza que todos los caracteres cerraron, y no hubo error de que el primer caracter fuera uno de clausura
-            if(pila.empty() && error==false && error2==false){ 
+            if(pila.empty() && !error && !error2){
                 System.out.println("Todos los simbolos estan balanceados");
             }
             else{
@@ -93,7 +93,7 @@ public class Main {
 	            		System.out.println("Error de corchete que abre falta corchete que cierra");
 	            	if(pila.peek().equals('('))
 	            		System.out.println("Error de parentesis que abre falta parentesis que cierra");
-            	}else if(error==false){//error2 indica que el caracter de cerradura no concuerda con el de apertura
+            	}else if(!error){//error2 indica que el caracter de cerradura no concuerda con el de apertura
             		switch(pila.peek()) {
             			case '(':cadena=" se esperaba un parentesis de cerradura";
             					 break;
