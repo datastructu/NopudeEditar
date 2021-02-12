@@ -93,7 +93,7 @@ public class Main {
 	            		System.out.println("Error de corchete que abre falta corchete que cierra");
 	            	if(pila.peek().equals('('))
 	            		System.out.println("Error de parentesis que abre falta parentesis que cierra");
-            	}else {//error2 indica que el caracter de cerradura no concuerda con el de apertura
+            	}else if(error==false){//error2 indica que el caracter de cerradura no concuerda con el de apertura
             		switch(pila.peek()) {
             			case '(':cadena=" se esperaba un parentesis de cerradura";
             					 break;
